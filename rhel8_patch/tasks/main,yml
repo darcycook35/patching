@@ -1,1 +1,12 @@
+---
+ - name: display current kernel
+   ansible.builtin.shell
+         cmd: uname a | awk '{print$'}
 
+  - name: Upgrade all packages
+    ansible.builtin.dnf:
+      name: "*"
+      state: latest
+
+  - name: reboot required for new kernel
+    ansible.builtin.reboot
